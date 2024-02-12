@@ -14,7 +14,7 @@ const Sidebar = () => {
       {/* sidebarLeft */}
       <div className="sidebarLeft">
         <div className="serverIcon">
-          <img src="./logo192.png" alt="" />
+          <img src="./discordIcon.png" alt="" />
         </div>
         <div className="serverIcon">
           <img src="./logo192.png" alt="" />
@@ -24,7 +24,7 @@ const Sidebar = () => {
       <div className="sidebarRight">
         {/* sidebarTop */}
         <div className="sidebarTop">
-          <h3>Discode</h3>
+          <h3>Discord</h3>
           <ExpandMoreIcon />
         </div>
 
