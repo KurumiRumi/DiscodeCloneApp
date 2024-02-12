@@ -19,6 +19,7 @@
       margin-top: 7px;
       margin-bottom: 10px;
       position: relative; // 親要素指定
+
       img {
         width: 50px;
         /* 中央寄せの一般的な方法 */
@@ -33,5 +34,14 @@
 
   .sidebarRight {
     background-color: #2b2d33;
+    width: 300px;
+
+    .sidebarTop {
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+    }
   }
 }
