@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import "./App.scss";
 import Sidebar from "./components/sidebar/Sidebar";
 import Chat from "./components/chat/Chat";
@@ -6,6 +7,8 @@ import Login from "./components/login/Login";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { auth } from "./firebase";
 import { login, logout } from "./features/userSlice";
+import { ErrorFallBack } from "./utils/ErrorFallBack";
+import { ErrorBoundary } from "react-error-boundary";
 
 function App() {
   const user = useAppSelector((state) => state.user);
@@ -33,7 +36,9 @@ function App() {
     <div className="App">
       {user ? (
         <>
-          <Sidebar />
+          <ErrorBoundary FallbackComponent={ErrorFallBack}>
+            <Sidebar />
+          </ErrorBoundary>
           <Chat />
         </>
       ) : (
