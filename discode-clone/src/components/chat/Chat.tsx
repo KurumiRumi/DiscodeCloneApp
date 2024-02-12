@@ -6,6 +6,7 @@ import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 
 import "./Chat.scss";
 import ChatHeader from "./ChatHeader";
+import ChatMessage from "./ChatMessage";
 
 const Chat = () => {
   return (
@@ -13,7 +14,11 @@ const Chat = () => {
       {/* chatHeader */}
       <ChatHeader />
       {/* chatMessage */}
-      <div className="chatMessage"></div>
+      <div className="chatMessage">
+        <ChatMessage />
+        <ChatMessage />
+        <ChatMessage />
+      </div>
       {/* chatInput */}
       <div className="chatInput">
         <AddCircleOutlineIcon />
