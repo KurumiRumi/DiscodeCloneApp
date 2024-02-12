@@ -1,0 +1,33 @@
+.sidebar {
+  display: flex;
+  flex: 0.35; // 横幅35%使用する
+  height: 100vh;
+  background-color: gray;
+
+  .sidebarLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    background-color: black;
+    padding: 7px 15px;
+
+    .serverIcon {
+      width: 60px;
+      height: 60px;
+      background-color: gray;
+      border-radius: 9999px;
+      margin-bottom: 10px;
+      position: relative; // 親要素指定
+      img {
+        width: 50px;
+        /* 中央寄せの一般的な方法 */
+        position: absolute; // 親に対しての絶対値
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* ******************** */
+      }
+    }
+  }
+}
