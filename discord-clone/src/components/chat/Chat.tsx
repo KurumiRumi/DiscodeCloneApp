@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import GifIcon from "@mui/icons-material/Gif";
@@ -11,17 +11,52 @@ import { useAppSelector } from "../../app/hooks";
 import {
   CollectionReference,
   DocumentData,
+  Timestamp,
   addDoc,
   collection,
+  onSnapshot,
   serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
+interface Messages {
+  message: string;
+  timestamp: Timestamp;
+  user: {
+    uid: string;
+    photo: string;
+    email: string;
+    displayName: string;
+  };
+}
+
 const Chat = () => {
   const [inputText, setInputText] = useState<string>("");
+  const [messages, setMessages] = useState<Messages[]>([]);
   const channelId = useAppSelector((state) => state.channel.channelId);
   const channelName = useAppSelector((state) => state.channel.channelName);
   const user = useAppSelector((state) => state.user.user);
+
+  useEffect(() => {
+    let collectionRef = collection(
+      db,
+      "channels",
+      String(channelId),
+      "messages"
+    );
+
+    onSnapshot(collectionRef, (snapshot) => {
+      let results: Messages[] = [];
+      snapshot.docs.forEach((doc) => {
+        results.push({
+          message: doc.data().message,
+          timestamp: doc.data().timestamp,
+          user: doc.data().user,
+        });
+      });
+      setMessages(results);
+    });
+  }, [channelId]);
 
   const sendMessage = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
