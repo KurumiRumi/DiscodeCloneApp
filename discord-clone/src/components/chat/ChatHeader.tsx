@@ -8,13 +8,18 @@ import HelpIcon from "@mui/icons-material/Help";
 
 import "./ChatHeader.scss";
 
-const ChatHeader = () => {
+type Props = {
+  channelName: string | null;
+};
+
+const ChatHeader = (props: Props) => {
+  const { channelName } = props;
   return (
     <div className="chatHeader">
       <div className="chatHeaderLeft">
         <h3>
           <span className="chatHeaderHash">#</span>
-          Udemy
+          {channelName}
         </h3>
       </div>
 
